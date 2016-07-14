@@ -1,7 +1,49 @@
 <html>
 
+  <head>
+    <title>a little each day</title>
+
+    <!-- mtodo: use the minified versions in production mode -->
+    <script src="https://fb.me/react-15.2.1.js"></script>
+    <script src="https://fb.me/react-dom-15.2.1.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-core/5.6.16/browser.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+  </head>
+
   <body>
-    Hi there.
+    <div id='content'>
+    </div>
+
+    <script type="text/babel">
+
+      var ChecklistItem = React.createClass({
+        render: function() {
+          return (
+            <div className="checklist-item">
+              {this.props.longtermGoal}
+            </div>
+          );
+        }
+      });
+
+      var Checklist = React.createClass({
+        render: function() {
+          return (
+            <div className='checklist'>
+              <ChecklistItem longtermGoal='learn to cook' />
+              <ChecklistItem longtermGoal='travel to japan' />
+              <ChecklistItem longtermGoal='build a house' />
+            </div>
+          );
+        }
+      });
+
+      ReactDOM.render(
+        <Checklist />,
+        $('#content')[0]
+      );
+
+    </script>
   </body>
 
 </html>
