@@ -1,15 +1,20 @@
 'use strict';
 
 const Hapi = require('hapi');
+const Inert = require('inert');
+const Path = require('path');
 
 const server = new Hapi.Server();
+server.register(Inert, function(err) {
+  if (err) throw err;
+});
 server.connection({ port: process.env.PORT || 3000 });
 
 server.route({
   method: 'GET',
   path: '/',
-  handler: function (request, reply) {
-    reply('Hello, world!');
+  handler: {
+    file: Path.join(__dirname, 'index.html')
   }
 });
 
