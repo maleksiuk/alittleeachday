@@ -15,6 +15,11 @@
     </div>
 
     <script type="text/babel">
+      var data = [
+        { id: 1, longtermGoal: "learn to cook" },
+        { id: 2, longtermGoal: "travel to japan" },
+        { id: 3, longtermGoal: "build a house" }
+      ];
 
       var ChecklistItem = React.createClass({
         render: function() {
@@ -28,18 +33,22 @@
 
       var Checklist = React.createClass({
         render: function() {
+          var items = this.props.data.map(function(item) {
+            return (
+              <ChecklistItem longtermGoal={item.longtermGoal} key={item.id} />
+            );
+          });
+
           return (
             <div className='checklist'>
-              <ChecklistItem longtermGoal='learn to cook' />
-              <ChecklistItem longtermGoal='travel to japan' />
-              <ChecklistItem longtermGoal='build a house' />
+              {items}
             </div>
           );
         }
       });
 
       ReactDOM.render(
-        <Checklist />,
+        <Checklist data={data} />,
         $('#content')[0]
       );
 
