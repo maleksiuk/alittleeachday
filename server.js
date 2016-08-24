@@ -18,6 +18,18 @@ server.route({
   }
 });
 
+server.route({		
+  method: 'GET', 
+  path: '/public/{path*}', 
+  handler: {			
+    directory: {				
+      path: './public',				
+      listing: false,				
+      index: false			
+    }		
+  }
+});	
+
 server.route({
   method: 'GET',
   path: '/{name}',

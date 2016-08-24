@@ -8,6 +8,9 @@
     <script src="https://fb.me/react-dom-15.2.1.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-core/5.6.16/browser.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+
+    <link rel="stylesheet" href="public/css/normalize.css">
+    <link rel="stylesheet" href="public/css/skeleton.css">
   </head>
 
   <body>
@@ -24,8 +27,10 @@
       var ChecklistItem = React.createClass({
         render: function() {
           return (
-            <div className="checklist-item">
-              {this.props.longtermGoal}
+            <div className="checklist-item row">
+              <div className="one column"></div>
+              <div className="ten columns">{this.props.longtermGoal}</div>
+              <div className="one column"></div>
             </div>
           );
         }
@@ -40,7 +45,7 @@
           });
 
           return (
-            <div className='checklist'>
+            <div className='checklist container'>
               {items}
             </div>
           );
